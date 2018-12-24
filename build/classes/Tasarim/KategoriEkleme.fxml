@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="169.0" prefWidth="260.0" style="-fx-background-color: #ddf3d0;" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.ControllerKategoriEkle">
+   <children>
+      <JFXTextField fx:id="txt_Kategori" layoutX="100.0" layoutY="31.0" />
+      <Label layoutX="21.0" layoutY="43.0" text="Kategori Adı:" />
+      <JFXButton layoutX="14.0" layoutY="81.0" onAction="#btn_KategoriEkle" prefHeight="39.0" prefWidth="225.0" style="-fx-background-color: #DCDCDC;" text="Ekle">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Resimler/Kontrol.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label fx:id="lbl_Islem" layoutX="45.0" layoutY="134.0" prefHeight="25.0" prefWidth="164.0" />
+   </children>
+</Pane>

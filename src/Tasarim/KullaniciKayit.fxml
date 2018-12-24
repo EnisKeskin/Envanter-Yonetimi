@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="300.0" style="-fx-background-color: #ddf3d0;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/10.0.1" fx:controller="Controller.ControllerKayitOl">
+   <children>
+      <JFXButton layoutX="24.0" layoutY="260.0" onAction="#btn_kayit" prefHeight="39.0" prefWidth="253.0" style="-fx-background-color: #DCDCDC;" text="Kayıt Ol">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="75.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/Resimler/Kontrol.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
+      <Label layoutX="72.0" layoutY="35.0" text="İsim:" />
+      <Label layoutX="56.0" layoutY="88.0" text="Soyisim:" />
+      <Label layoutX="62.0" layoutY="143.0" text="E-Mail:" />
+      <Label layoutX="73.0" layoutY="201.0" text="Şifre:" />
+      <JFXTextField fx:id="txt_Isim" layoutX="108.0" layoutY="31.0" onKeyTyped="#isimKontrol" />
+      <JFXTextField fx:id="txt_Soyisim" layoutX="108.0" layoutY="84.0" onKeyTyped="#soyIsimKontrol" />
+      <JFXTextField fx:id="txt_Mail" layoutX="108.0" layoutY="139.0" onKeyTyped="#mailKontrol" />
+      <JFXPasswordField fx:id="txt_Sifre" layoutX="108.0" layoutY="197.0" onKeyTyped="#sifreKontrol" />
+   </children>
+</Pane>
