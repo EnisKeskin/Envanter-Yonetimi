@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Envanter-Yönetim.jar" size="732031" download="eager" />
+    <jar href="Envanter-Yönetim.jar" size="727138" download="eager" />
     <jar href="lib\jfoenix-8.0.8.jar" size="2708772" download="eager" />
     <jar href="lib\sqlite-jdbc-3.23.1.jar" size="6733696" download="eager" />
   </resources>

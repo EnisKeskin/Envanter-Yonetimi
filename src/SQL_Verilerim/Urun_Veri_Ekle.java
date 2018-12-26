@@ -1,5 +1,9 @@
 package SQL_Verilerim;
 
+import static SQL_Verilerim.Kategori_Veri_Duzenle.SUTUN_KategoriKulID;
+import static SQL_Verilerim.Urun_Veri_Duzenle.SUTUN_KategoriAdi;
+import static SQL_Verilerim.Urun_Veri_Duzenle.SUTUN_KategoriId;
+import static SQL_Verilerim.Urun_Veri_Duzenle.TABLO_Kategori;
 import VeriSiniflari.Veri_Aktarimi;
 
 import java.sql.*;
@@ -69,9 +73,10 @@ public class Urun_Veri_Ekle {
         return sonuc.getInt(SUTUN_KullaniciId);
     }
     //KategoriAdi'nı KategoriID fonksiyonuna verdiğimizde veridiğimiz kategoriAdi'nın ID'sini buluyor.
-    public String KategoriID(String Kategori) throws SQLException {
-        PreparedStatement statement= Sql_Baglanma.getInstance().connection.prepareStatement("SELECT "+SUTUN_KategoriId+" FROM "+TABLO_Kategori+" WHERE "+SUTUN_KategoriAdi+"="+"?");
-        statement.setString(1,Kategori);
+    public String KategoriID(String kategoriAdi) throws SQLException {
+        PreparedStatement statement= Sql_Baglanma.getInstance().connection.prepareStatement("SELECT "+SUTUN_KategoriId+" FROM "+TABLO_Kategori+" WHERE "+SUTUN_KategoriAdi+"=? AND "+SUTUN_KategoriKulID+"=?");
+        statement.setString(1, kategoriAdi);
+        statement.setInt(2, KullaniciID());
         ResultSet sonuc=statement.executeQuery();
         return sonuc.getString(SUTUN_KategoriId);
     }

@@ -1,5 +1,13 @@
 package SQL_Verilerim;
 
+import static SQL_Verilerim.Kategori_Veri_Duzenle.SUTUN_KategoriAdi;
+import static SQL_Verilerim.Kategori_Veri_Duzenle.SUTUN_KategoriId;
+import static SQL_Verilerim.Kategori_Veri_Duzenle.SUTUN_KategoriKulID;
+import static SQL_Verilerim.Kategori_Veri_Duzenle.TABLO_Kategori;
+import static SQL_Verilerim.Urun_Veri_Al.SUTUN_KullaniciId;
+import static SQL_Verilerim.Urun_Veri_Al.SUTUN_Kullanici_Adi;
+import static SQL_Verilerim.Urun_Veri_Al.TABLO_Kullanici;
+import VeriSiniflari.Veri_Aktarimi;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -46,7 +54,7 @@ public class Urun_Veri_Duzenle {
             pstmt.setString(1,UrunAdi);
             pstmt.setString(2,UrunMiktar);
             pstmt.setString(3,Tarih);
-            pstmt.setString(4,KategoriId(Kategori));
+            pstmt.setString(4,KategoriID(Kategori));
             pstmt.setString(5,BirimId(Birim));
             pstmt.setString(6,id);
             //işlemimiz tamamlandıksan sonra executeUpdate komutunu çalıştırarak sorgumuz gercekleşir.
@@ -59,9 +67,10 @@ public class Urun_Veri_Duzenle {
 
     }
     //kategoriAdi'nı KategoriID fonksiyonuna verdiğimizde veridiğimiz kategoriAdi'nın ID'sini buluyor.
-    public String KategoriId(String Kategori) throws SQLException {
-        PreparedStatement statement= Sql_Baglanma.getInstance().connection.prepareStatement("SELECT "+SUTUN_KategoriId+" FROM "+TABLO_Kategori+" WHERE "+SUTUN_KategoriAdi+"="+"?");
-        statement.setString(1,Kategori);
+    public String KategoriID(String kategoriAdi) throws SQLException {
+        PreparedStatement statement= Sql_Baglanma.getInstance().connection.prepareStatement("SELECT "+SUTUN_KategoriId+" FROM "+TABLO_Kategori+" WHERE "+SUTUN_KategoriAdi+"=? AND "+SUTUN_KategoriKulID+"=?");
+        statement.setString(1, kategoriAdi);
+        statement.setInt(2, KullaniciID());
         ResultSet sonuc=statement.executeQuery();
         return sonuc.getString(SUTUN_KategoriId);
     }
@@ -71,6 +80,12 @@ public class Urun_Veri_Duzenle {
         statement.setString(1,Birim);
         ResultSet sonuc=statement.executeQuery();
         return sonuc.getString(SUTUN_BirimId);
+    }
+        public int KullaniciID() throws SQLException {
+        PreparedStatement statement= Sql_Baglanma.getInstance().connection.prepareStatement("SELECT "+SUTUN_KullaniciId+" FROM "+TABLO_Kullanici+" WHERE "+SUTUN_Kullanici_Adi+"="+"?");
+        statement.setString(1, Veri_Aktarimi.getInstance().getVeri());
+        ResultSet sonuc=statement.executeQuery();
+        return sonuc.getInt(SUTUN_KullaniciId);
     }
 
 }

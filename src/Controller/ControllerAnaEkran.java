@@ -120,9 +120,9 @@ public class ControllerAnaEkran {
         @FXML
         void conMen_Sil(ActionEvent event) {
             //TableView üzerine tıkladığımız nesnenin bilgilerini veriyor
-            if(tableview.getSelectionModel().isCellSelectionEnabled())
-            {
             Urun_Veri id=tableview.getSelectionModel().getSelectedItem();
+            if(id != null)
+            {
             //Uyarı cıkıyor eğer Ok basılırsa nesneyi siliyor
             if (Uyarı()) {
                 //Urun_Veri_Sil sınıfından verisil çağırıyor ve icine seçtirdiğimiz nesnenin id atıyoruz.
@@ -136,9 +136,9 @@ public class ControllerAnaEkran {
         @FXML
         void conMen_Duzenle(ActionEvent event) throws IOException, SQLException {
             //TableView üzerine tıkladığımız nesnenin bilgilerini veriyor
-            if(tableview.getSelectionModel().isCellSelectionEnabled()){
             Urun_Veri id=tableview.getSelectionModel().getSelectedItem();
             //Seçtiğimiz nesnenin tüm verilerini aktarma metodu ile setliyoruz düzenledeki TextField ve ComboBox içinde verilerimizi yerleştirebilmek için
+            if (id != null) {
             Veri_Aktarimiurun.getInstance().setUrunID(id.getUrunId());
             Veri_Aktarimiurun.getInstance().setUrunAdi(id.getUrunAdi());
             Veri_Aktarimiurun.getInstance().setUrunMiktar(id.getMiktar());
@@ -146,7 +146,7 @@ public class ControllerAnaEkran {
             Veri_Aktarimiurun.getInstance().setUrunKategori(id.getKategori());
             //Ürün Düzenle formunu çağırıyor.
             Formlar.getInstance().EkranCıktısıUrunDuzenle(urunDuzenle,event,"Ürün Düzenle", "/Resimler/Logo.jpg");}
-         }
+            }
          //tableView fonk çağırarak yenilenen fonk tekrardan ekrana yazdırıyoruz.
         @FXML
         void conMen_Guncelle(ActionEvent event) throws IOException {

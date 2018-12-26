@@ -35,7 +35,7 @@ public class ControllerKayitOl
         isim = txt_Isim.getText();
         //Soyisim TextFieldındaki verileri alıp soyisim değişkenine atandı.
         String soyisim;
-        soyisim = txt_Isim.getText();
+        soyisim = txt_Soyisim.getText();
         //Mail TextFieldındaki verileri alıp mail değişkenine atandı.
         String mail;
         mail = txt_Mail.getText();

@@ -35,7 +35,10 @@ public class Kategori_Veri_Duzenle {
             //Sql_Baglanma sınıfımdan connection fonksiyonumu çağırıp Javada sql Sorgusu kullanmamı sağlayan Kütüphane
             //fonksiyonu olan Preparedstatement'a atıyoruz.
             //PreparedStatement Statement farklı olarak icine veri alabiliyor.
-            PreparedStatement prestatement = connection.prepareStatement("UPDATE "+TABLO_Kategori+" SET "+SUTUN_KategoriAdi+" = ? WHERE "+SUTUN_KategoriId+"= ? and "+SUTUN_KategoriKulID+"=?");
+            System.out.println(kategori);
+            System.out.println(KullaniciID());
+            System.out.println(KategoriID(kategori));
+            PreparedStatement prestatement = connection.prepareStatement("UPDATE "+TABLO_Kategori+" SET "+SUTUN_KategoriAdi+"=? WHERE "+SUTUN_KategoriId+"=? AND "+SUTUN_KategoriKulID+"=?");
             //? işaretleri 1 den başlıyarak sırayla gidiyor ve icine aktarmak istediğimiz değerleri yazdırıyoruz.
             prestatement.setString(1, kategoriYeni);
             prestatement.setString(2, KategoriID(kategori));
@@ -51,8 +54,9 @@ public class Kategori_Veri_Duzenle {
     }
     //kategoriAdi'nı KategoriID fonksiyonuna verdiğimizde veridiğimiz kategoriAdi'nın ID'sini buluyor.
     public String KategoriID(String kategoriAdi) throws SQLException {
-        PreparedStatement statement= Sql_Baglanma.getInstance().connection.prepareStatement("SELECT "+SUTUN_KategoriId+" FROM "+TABLO_Kategori+" WHERE "+SUTUN_KategoriAdi+"="+"?");
+        PreparedStatement statement= Sql_Baglanma.getInstance().connection.prepareStatement("SELECT "+SUTUN_KategoriId+" FROM "+TABLO_Kategori+" WHERE "+SUTUN_KategoriAdi+"=? AND "+SUTUN_KategoriKulID+"=?");
         statement.setString(1, kategoriAdi);
+        statement.setInt(2, KullaniciID());
         ResultSet sonuc=statement.executeQuery();
         return sonuc.getString(SUTUN_KategoriId);
     }
